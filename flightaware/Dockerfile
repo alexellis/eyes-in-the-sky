@@ -11,6 +11,4 @@ RUN wget http://uk.flightaware.com/adsb/piaware/files/packages/pool/piaware/p/pi
 EXPOSE 8080
 EXPOSE 30003
 
-COPY piaware.conf /etc/
-
 CMD ["piaware", "-debug"]
