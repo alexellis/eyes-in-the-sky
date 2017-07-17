@@ -34,5 +34,6 @@ EXPOSE 30005
 EXPOSE 30104
 
 # Update your lat/lon values.
+WORKDIR /root/dump1090
 
-CMD ["./dump1090/dump1090", "--net-http-port", "8080", "--net", "--net-sbs-port", "30003", "--interactive", "--lat", "52.5725", "--lon", "0.2392"]
+CMD ["./dump1090", "--net-http-port", "8080", "--net", "--net-sbs-port", "30003", "--interactive", "--lat", "52.5725", "--lon", "0.2392"]
