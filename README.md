@@ -12,20 +12,28 @@ This repo contains the following:
 
 1. Make sure Docker is installed on your raspberry pi:
 
+    ```
     $ curl -sSL https://get.docker.com | sh
+    ```
 
 2. Clone the repo on your raspberry pi:
 
+    ```
     $ git clone https://github.com/LoungeFlyZ/eyes-in-the-sky
+    ```
 
 3. Download a copy of docker-compose for raspberry pi:
 
+    ```
     $ wget -O docker-compose https://github.com/javabean/arm-compose/releases/download/1.16.1/docker-compose-Linux-armv7l
     $ chmod +x docker-compose
+    ```
 
 4. Edit docker-compose.yml 
 
+    ```
     $ nano docker-compose.yml
+    ```
     
 5. Replace the following environment configuration with your own settings:
 
@@ -37,7 +45,9 @@ This repo contains the following:
 
 6. docker-compose up
 
+    ```
     $ docker-compose -f docker-compose.yml up -d
+    ```
     
 7. browse to your raspberry pi's ip address on port 8080
  
@@ -49,8 +59,12 @@ You should now see dump1090's web interface.
 
 - Check the logs for the piaware container
 
+    ```
     $ docker logs piaware
+    ```
     
 - Check the logs for the dump1090 container
 
+    ```
     $ docker logs dump1090
+    ```
