@@ -2,11 +2,13 @@
 
 Instructions and Dockerfiles for tracking flights with your Raspberry Pi and a USB TV stick.
 
+Inspired by Alex Ellis' blog post: [Get eyes in the sky with your Raspberry Pi](https://blog.alexellis.io/track-flights-with-rpi/)
+
 This repo contains the following:
 
-* dump1090 - A docker container for [MalcolmRobb/dump1090](https://github.com/malcolmrobb/dump1090) that is a simple Mode S decoder for RTLSDR devices
-* flightaware - A docker container for [PiAware](http://flightaware.com/adsb/piaware/)
-* docker-compose.yml - A docker compose file where all configuration is made. 
+* dump1090 - A docker container for [MalcolmRobb/dump1090](https://github.com/malcolmrobb/dump1090) that is a simple Mode S decoder for [RTLSDR devices](http://flightaware.com/adsb/prostick/).
+* flightaware - A docker container for FlightAware.com's [PiAware](http://flightaware.com/adsb/piaware/) feeder app.
+* docker-compose.yml - A docker compose file where all configuration is made.
 
 ## Simple setup
 
