@@ -1,0 +1,29 @@
+version: '3.2'
+services:
+  dump1090:
+    image: "loungefly/raspbian-dump1090"
+    build: ./dump1090
+    container_name: dump1090
+    privileged: true
+    ports:
+     - "8080:8080"
+     - "30003:30003"
+     - "30005:30005"
+     - "30104:30104"
+    environment:
+      - DUMP_HTTP_PORT=8080
+      - DUMP_SBS_PORT=30003
+      - DUMP_LAT=49.555
+      - DUMP_LON=-124.555
+  piaware:
+    image: "loungefly/raspbian-flightaware"
+    container_name: piaware
+    build: ./flightaware
+    volumes:
+      - ./flightaware/piaware.conf:/etc/piaware.conf
+    environment:
+      - PIAWARE_HOST=dump1090
+      - PIAWARE_PORT=30005
+      - PIAWARE_USER=username
+      - PIAWARE_PASSWORD=password
+      - PIAWARE_FEEDER_ID=
