@@ -56,6 +56,16 @@ This repo contains the following:
     
 You should now see dump1090's web interface.
 
+## Setting your feeder id
+
+Log into your FlightAware account and find your new feeder on the "My ADS-B" page. Every time a new feeder is detected FlightAware assigns a unique identifier (guid) to it. To ensure your piaware container is not seen as a new feeder each time it is restarted you need to get the "unique identifier" from your My ADS-B stats page and set it in the docker-compose.yml file.
+
+    ```
+    - PIAWARE_FEEDER_ID=532e29ff-ed56-4b7b-72b6-12b56313b49a
+    ```
+
+This will ensure that when your piaware container is restarted that it is seen as the same feeder in flightaware. 
+
 ## Troubleshooting
 
 - Check the logs for the piaware container
