@@ -24,11 +24,10 @@ This repo contains the following:
     $ git clone https://github.com/LoungeFlyZ/eyes-in-the-sky
     ```
 
-3. Download a copy of docker-compose for raspberry pi:
+3. Install docker-compose:
 
     ```
-    $ wget -O docker-compose https://github.com/javabean/arm-compose/releases/download/1.16.1/docker-compose-Linux-armv7l
-    $ chmod +x docker-compose
+    $ sudo apt-get -y install python-setuptools && sudo easy_install pip  && sudo pip install docker-compose
     ```
 
 4. Edit docker-compose.yml 
