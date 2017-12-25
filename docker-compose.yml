@@ -27,3 +27,14 @@ services:
       - PIAWARE_USER=username
       - PIAWARE_PASSWORD=password
       - PIAWARE_FEEDER_ID=
+  flightradar:
+    image: "loungefly/raspbian-flightradar24"
+    container_name: flightradar24
+    build: ./flightradar
+    ports:
+     - "8754:8754"
+    environment:
+      - DUMP1090_HOST=dump1090
+      - DUMP1090_PORT=30005
+      - FR24_KEY=
+    restart: always

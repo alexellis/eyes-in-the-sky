@@ -56,7 +56,7 @@ This repo contains the following:
     
 You should now see dump1090's web interface.
 
-## Setting your feeder id
+## Setting your feeder id -- FlightAware.com
 
 Log into your FlightAware account and find your new feeder on the "My ADS-B" page. Every time a new feeder is detected FlightAware assigns a unique identifier (guid) to it. To ensure your piaware container is not seen as a new feeder each time it is restarted you need to get the "unique identifier" from your My ADS-B stats page and set it in the docker-compose.yml file.
 
@@ -65,6 +65,27 @@ Log into your FlightAware account and find your new feeder on the "My ADS-B" pag
     ```
 
 This will ensure that when your piaware container is restarted that it is seen as the same feeder in flightaware. 
+
+## Setting your feeder key -- FlightRadar24.com (optional)
+
+Before you can feed FlightRadar24.com you need to create an account on their website. Then you need to run the flightaware container with a signup command to register and generate your key.
+
+If you dont want to feed FlightRadar24.com comment out the flightradar service in the docker-compose.yml
+
+
+    ```
+    $ docker run -it loungefly/raspbian-flightradar24 /usr/bin/fr24feed --signup
+    ```
+
+Step 1.1 Enter your accounts email address
+Step 1.2 Leave blank
+Step 1.3 yes
+Step 3.A Enter your latitude
+Step 3.B Enter your longitude
+Step 3.C Enter your altitude in feet
+Enter 'yes' to confirm
+
+You should be given a key that you can copy and enter into the docker-compose.yml file in the FR24_KEY environment variable.
 
 ## Troubleshooting
 
