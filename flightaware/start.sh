@@ -1,11 +1,31 @@
 #!/bin/bash
 
-echo "receiver-type other" > /etc/piaware.conf
-echo "receiver-host $PIAWARE_HOST" >> /etc/piaware.conf
-echo "receiver-port $PIAWARE_PORT" >> /etc/piaware.conf
-echo "flightaware-user $PIAWARE_USER" >> /etc/piaware.conf
-echo "flightaware-password $PIAWARE_PASSWORD" >> /etc/piaware.conf
-echo "mlat-results no" >> /etc/piaware.conf
-echo "feeder-id $PIAWARE_FEEDER_ID" >> /etc/piaware.conf
+/usr/bin/piaware-config mlat-results no
+/usr/bin/piaware-config reciever-type other
+
+[[ ! -z ${PIAWARE_HOST} ]]             &&  /usr/bin/piaware-config reciever-port ${PIAWARE_HOST} || PIAWARE_HOST="dump1090"
+[[ ! -z ${PIAWARE_PORT} ]]             &&  /usr/bin/piaware-config reciever-port ${PIAWARE_PORT} || PIAWARE_PORT="30005"
+[[ ! -z ${PIAWARE_FEEDER_ID} ]]       && /usr/bin/piaware-config feeder-id ${PIAWARE_FEEDER_ID}
+
+# Recommend adding this to the config
+[[ ! -z ${GAIN} ]]             && /usr/bin/piaware-config rtlsdr-gain ${GAIN} || GAIN="-10"
+[[ ! -z ${PPM} ]]              && /usr/bin/piaware-config rtlsdr-ppm ${PPM} || PPM="1"
+
+# These are old ways of flight-aware/piaware
+
+if [[ ! -z ${PIAWARE_USER} ]] && [[ -z ${PIAWARE_FEEDER_ID} ]]; then
+    echo "WARNING: flightaware-user has been deprecated."
+    /usr/bin/piaware-config flightaware-user ${PIAWARE_USERNAME}
+fi
+
+if [[ ! -z ${PIAWARE_PASSWORD} ]] && [[ -z ${PIAWARE_FEEDER_ID} ]]; then
+    echo "WARNING: flightaware-password has been deprecated."
+    /usr/bin/piaware-config flightaware-password ${PIAWARE_PASSWORD}
+fi
+
+if [[ ! -z ${PIAWARE_MAC} ]]; then
+    echo "WARNING: force-macaddress has been deprecated."
+    /usr/bin/piaware-config force-macaddress ${PIAWARE_MAC}
+fi
 
 /usr/bin/piaware -debug
