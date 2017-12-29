@@ -11,4 +11,9 @@ RUN wget http://uk.flightaware.com/adsb/piaware/files/packages/pool/piaware/p/pi
 EXPOSE 8080
 EXPOSE 30003
 
-CMD ["piaware", "-debug"]
+COPY ./start.sh start.sh
+RUN chmod +x start.sh
+
+ENV PIAWARE_HOST="" PIAWARE_PORT="" PIAWARE_USER="" PIAWARE_PASSWORD="" PIAWARE_FEEDER_ID=""
+
+CMD ["/start.sh"]
