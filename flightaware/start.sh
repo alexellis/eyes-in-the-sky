@@ -1,10 +1,10 @@
 #!/bin/bash
 
 /usr/bin/piaware-config mlat-results no
-/usr/bin/piaware-config reciever-type other
+/usr/bin/piaware-config receiver-type other
 
-[[ ! -z ${PIAWARE_HOST} ]]             &&  /usr/bin/piaware-config reciever-port ${PIAWARE_HOST} || PIAWARE_HOST="dump1090"
-[[ ! -z ${PIAWARE_PORT} ]]             &&  /usr/bin/piaware-config reciever-port ${PIAWARE_PORT} || PIAWARE_PORT="30005"
+[[ ! -z ${PIAWARE_HOST} ]]             &&  /usr/bin/piaware-config receiver-host ${PIAWARE_HOST} || PIAWARE_HOST="dump1090"
+[[ ! -z ${PIAWARE_PORT} ]]             &&  /usr/bin/piaware-config receiver-port ${PIAWARE_PORT} || PIAWARE_PORT="30005"
 [[ ! -z ${PIAWARE_FEEDER_ID} ]]       && /usr/bin/piaware-config feeder-id ${PIAWARE_FEEDER_ID}
 
 # Recommend adding this to the config
